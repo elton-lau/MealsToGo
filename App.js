@@ -1,16 +1,20 @@
 import { StyleSheet, Text, View, SafeAreaView, StatusBar } from 'react-native';
+import { NativeBaseProvider, Box } from 'native-base';
+import Searchbar from './src/components/Searchbar';
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.search}>
-        <Text>search</Text>
-      </View>
-      <View style={styles.body}>
-        <Text>lists</Text>
-      </View>
-      {/* <StatusBar style="auto" /> */}
-    </SafeAreaView>
+    <NativeBaseProvider>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.search}>
+          <Searchbar />
+        </View>
+        <View style={styles.body}>
+          <Text>lists</Text>
+        </View>
+        {/* <StatusBar style="auto" /> */}
+      </SafeAreaView>
+    </NativeBaseProvider>
   );
 }
 
@@ -22,9 +26,9 @@ const styles = StyleSheet.create({
     marginTop: StatusBar.currentHeight,
   },
   search: {
-    backgroundColor: 'green',
     padding: 16,
     justifyContent: 'center',
+    alignItems: 'center',
   },
   body: {
     flex: 1,
