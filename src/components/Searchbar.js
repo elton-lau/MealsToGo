@@ -6,6 +6,7 @@ function Searchbar() {
     <VStack space={5} w="100%">
       <Input
         placeholder="Search Restuarants & Places"
+        fontFamily="heading"
         width="100%"
         borderRadius="25"
         py="2"
