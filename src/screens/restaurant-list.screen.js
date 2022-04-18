@@ -1,10 +1,12 @@
 import { StyleSheet, Text, View, SafeAreaView, StatusBar } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import Searchbar from '../components/Searchbar';
 import RestaurantInfoCard from '../components/RestaurantInfoCard.component';
 import { FlatList, Box, Flex } from 'native-base';
+import { RestaurantListContext } from '../services/restaurants/restaurants.context';
 
 const RestaurantListScreen = () => {
+  const context = useContext(RestaurantListContext);
   return (
     <Box style={styles.container} safeArea>
       <View style={styles.search}>
@@ -12,7 +14,7 @@ const RestaurantListScreen = () => {
       </View>
       <Box>
         <FlatList
-          data={[{ name: 1 }, { name: 2 }, { name: 3 }, { name: 4 }, { name: 5 }]}
+          data={context.restaurantList}
           keyExtractor={(item) => item.name}
           contentContainerStyle={{ padding: 16 }}
           renderItem={(item) => <RestaurantInfoCard />}
