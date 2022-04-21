@@ -19,17 +19,17 @@ import star from '../../assets/star.svg';
 
 const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
-    name = 'restaurant',
+    name,
     icon,
     photos = ['https://via.placeholder.com/400x200'],
     address = '100 some random street',
     isOpenNow = true,
     rating = 3.2,
-    isClosedTemporarily = true, //
+    isClosedTemporarily = true,
+    placeId,
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
-  console.log(ratingArray);
 
   return (
     <Flex border="1" borderRadius="md" backgroundColor="white" padding="4" mb={3}>
@@ -44,8 +44,13 @@ const RestaurantInfoCard = ({ restaurant = {} }) => {
         {name}
       </Heading>
       <Flex direction="row" my={2}>
-        {ratingArray.map((index) => (
-          <Icon key={index} size="5" color="yellow.400" as={<MaterialIcons name="star" />} />
+        {ratingArray.map((_, index) => (
+          <Icon
+            key={`star-${placeId}-${index}`}
+            size="5"
+            color="yellow.400"
+            as={<MaterialIcons name="star" />}
+          />
         ))}
         <Spacer />
         {isClosedTemporarily && (
