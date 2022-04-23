@@ -16,6 +16,7 @@ import { Icon } from 'native-base';
 import { Ionicons, FontAwesome, MaterialIcons } from '@expo/vector-icons';
 
 import star from '../../assets/star.svg';
+import Favourite from './FavouriteComponent';
 
 const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
@@ -33,6 +34,7 @@ const RestaurantInfoCard = ({ restaurant = {} }) => {
 
   return (
     <Flex border="1" borderRadius="md" backgroundColor="white" padding="4" mb={3}>
+      <Favourite restaurant={restaurant} />
       <AspectRatio
         width="100%"
         ratio={{

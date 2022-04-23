@@ -1,4 +1,4 @@
-import { View, Text, Image } from 'native-base';
+import { View, Text, Image, Flex } from 'native-base';
 import React from 'react';
 import { Svg, Image as ImageSvg } from 'react-native-svg';
 
@@ -13,6 +13,7 @@ const MapCallout = ({ restaurant }) => {
           href={{ uri: restaurant.photos[0] }}
         />
       </Svg>
+
       <Text variant="caption" numberOfLines={3}>
         {restaurant.name}
       </Text>

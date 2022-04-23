@@ -1,9 +1,9 @@
 import { VStack, Box, Divider, Heading, Input, Icon } from 'native-base';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons, AntDesign } from '@expo/vector-icons';
 import { useContext, useState, useEffect } from 'react';
 import { LocationContext } from '../services/location/location.context';
 
-function Searchbar() {
+function Searchbar({ isFavoriteToggled, onToggle }) {
   const { keyword, search } = useContext(LocationContext);
   const [searchKeyword, setSearchKeyword] = useState(keyword);
 
@@ -22,7 +22,14 @@ function Searchbar() {
         px="1"
         fontSize="14"
         InputLeftElement={
-          <Icon m="2" ml="3" size="6" color="gray.400" as={<MaterialIcons name="search" />} />
+          <Icon
+            m="2"
+            ml="3"
+            size="4"
+            color="gray.400"
+            as={<AntDesign name={isFavoriteToggled ? 'heart' : 'hearto'} />}
+            onPress={onToggle}
+          />
         }
       />
     </VStack>

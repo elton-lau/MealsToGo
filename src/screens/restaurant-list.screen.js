@@ -1,13 +1,17 @@
 import { StyleSheet, Text, View, SafeAreaView, StatusBar } from 'react-native';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Searchbar from '../components/Searchbar';
 import RestaurantInfoCard from '../components/RestaurantInfoCard.component';
 import { FlatList, Box, Flex, Spinner } from 'native-base';
 import { TouchableOpacity } from 'react-native';
 import { RestaurantListContext } from '../services/restaurants/restaurants.context';
+import { FavouriteContext } from '../services/favourite/favourite.context';
+import FavouritesBar from '../components/FavouritesBarComponent';
 
 const RestaurantListScreen = ({ navigation }) => {
   const { isLoading, error, restaurantList } = useContext(RestaurantListContext);
+  const [isToggle, setIsToggle] = useState(false);
+  const { favourites } = useContext(FavouriteContext);
   //console.log('restaurants list', restaurantList);
 
   if (isLoading) {
@@ -21,9 +25,10 @@ const RestaurantListScreen = ({ navigation }) => {
   return (
     <Box style={styles.container} safeArea>
       <View style={styles.search}>
-        <Searchbar />
+        <Searchbar onToggle={() => setIsToggle(!isToggle)} isFavoriteToggled={isToggle} />
       </View>
       <Box>
+        {isToggle && <FavouritesBar favourites={favourites} onNavigate={navigation.navigate} />}
         <FlatList
           data={restaurantList}
           keyExtracxtor={(item) => item.name}
