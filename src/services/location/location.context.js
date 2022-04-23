@@ -9,29 +9,26 @@ export function LocationContextProvider({ children }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const onSearch = useCallback(
-    (searchKeyword) => {
-      setIsLoading(true);
-      setKeyword(searchKeyword);
-      if (!searchKeyword) {
-        return;
-      }
-      locationRequest(keyword.toLowerCase())
-        .then(locationTransform)
-        .then((result) => {
-          setLocation(result);
-          setIsLoading(false);
-        })
-        .catch((err) => {
-          setError(err);
-        });
-    },
-    [keyword]
-  );
+  const onSearch = (searchKeyword) => {
+    setIsLoading(true);
+    setKeyword(searchKeyword);
+  };
 
   useEffect(() => {
-    onSearch(keyword);
-  }, [keyword, onSearch]);
+    if (!keyword) {
+      return;
+    }
+    locationRequest(keyword.toLowerCase())
+      .then(locationTransform)
+      .then((result) => {
+        setLocation(result);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setError(err);
+        console.warn('search error', err);
+      });
+  }, [keyword]);
 
   return (
     <LocationContext.Provider value={{ isLoading, error, location, search: onSearch, keyword }}>

@@ -3,6 +3,7 @@ import { restaurantListTransform, restaurantListRequest } from './restaurants.se
 import { LocationContext } from '../location/location.context';
 
 export const RestaurantListContext = createContext();
+
 export const RestaurantListContextProvider = ({ children }) => {
   const [restaurantList, setRestaurantList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -12,6 +13,7 @@ export const RestaurantListContextProvider = ({ children }) => {
   const retrieveRestaurants = (loc) => {
     setIsLoading(true);
     setRestaurantList([]);
+
     setTimeout(() => {
       restaurantListRequest(loc)
         .then(restaurantListTransform)
@@ -29,7 +31,7 @@ export const RestaurantListContextProvider = ({ children }) => {
   useEffect(() => {
     const locationString = `${location.lat},${location.lng}`;
     retrieveRestaurants(locationString);
-  }, [location.lat, location.lng]);
+  }, [location]);
 
   return (
     <RestaurantListContext.Provider value={{ restaurantList, isLoading, error }}>

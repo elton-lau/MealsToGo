@@ -7,13 +7,10 @@ function Searchbar() {
   const { keyword, search } = useContext(LocationContext);
   const [searchKeyword, setSearchKeyword] = useState(keyword);
 
-  useEffect(() => {
-    search(searchKeyword);
-  }, [search, searchKeyword]);
-
   return (
     <VStack space={5} w="100%">
       <Input
+        bg="white"
         onSubmitEditing={() => search(searchKeyword)}
         onChangeText={(text) => setSearchKeyword(text)}
         value={searchKeyword}
