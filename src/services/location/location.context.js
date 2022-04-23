@@ -26,7 +26,6 @@ export function LocationContextProvider({ children }) {
       })
       .catch((err) => {
         setError(err);
-        console.warn('search error', err);
       });
   }, [keyword]);
 

@@ -3,6 +3,7 @@ import { useFonts as useOswald, Oswald_400Regular } from '@expo-google-fonts/osw
 import { useFonts as useLato, Lato_400Regular } from '@expo-google-fonts/lato';
 import { RestaurantListContextProvider } from './src/services/restaurants/restaurants.context';
 import { LocationContextProvider } from './src/services/location/location.context';
+import { FavouriteContextProvider } from './src/services/favourite/favourite.context';
 import AppNavigator from './src/utils/app.navigator';
 
 export default function App() {
@@ -25,7 +26,9 @@ export default function App() {
     <NativeBaseProvider theme={theme}>
       <LocationContextProvider>
         <RestaurantListContextProvider>
-          <AppNavigator />
+          <FavouriteContextProvider>
+            <AppNavigator />
+          </FavouriteContextProvider>
         </RestaurantListContextProvider>
       </LocationContextProvider>
     </NativeBaseProvider>
