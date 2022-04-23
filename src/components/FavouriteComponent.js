@@ -21,7 +21,7 @@ const Favourite = ({ restaurant }) => {
       icon={
         <AntDesign
           name={isFavorite ? 'heart' : 'hearto'}
-          size="24"
+          size={12}
           color={isFavorite ? 'red' : 'white'}
         />
       }

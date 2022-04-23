@@ -23,7 +23,7 @@ function MapSearch() {
       py="2"
       px="1"
       width="100%"
-      fontSize="14"
+      fontSize="md"
       InputLeftElement={
         <Icon m="2" ml="3" size="6" color="gray.400" as={<MaterialIcons name="search" />} />
       }
