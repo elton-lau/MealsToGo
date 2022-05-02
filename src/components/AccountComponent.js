@@ -18,12 +18,12 @@ export const AccountCover = styled.View`
   background-color: rgba(255, 255, 255, 0.3);
 `;
 
-export const AuthButton = ({ name, onPress }) => {
+export const AuthButton = ({ name, onPress, icon }) => {
   return (
     <Button
       onPress={onPress}
       width="100px"
-      leftIcon={<Ionicons name="lock-open-outline" type="Ionicons" color="white" size={16} />}>
+      leftIcon={<Ionicons name={icon} type="Ionicons" color="white" size={16} />}>
       <Text color="white">{name}</Text>
     </Button>
   );

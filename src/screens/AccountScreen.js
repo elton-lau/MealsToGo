@@ -9,8 +9,16 @@ const AccountScreen = ({ navigation }) => {
       <AccountCover />
       <View backgroundColor="rgba(255, 255, 255, 0.7)" p={4} mt={2} alignItems="center">
         <VStack space={4}>
-          <AuthButton name="LOGIN" onPress={() => navigation.navigate('Login')} />
-          <AuthButton name="REGISTER" onPress={() => navigation.navigate('Register')} />
+          <AuthButton
+            name="LOGIN"
+            onPress={() => navigation.navigate('Login')}
+            icon="lock-open-outline"
+          />
+          <AuthButton
+            name="REGISTER"
+            onPress={() => navigation.navigate('Register')}
+            icon="mail-outline"
+          />
         </VStack>
       </View>
     </AccountBackground>

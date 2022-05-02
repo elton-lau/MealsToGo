@@ -9,7 +9,6 @@ import MapScreen from '../screens/MapScreen';
 import { AuthenticationContext } from '../services/authentication/authentication.context';
 import { View, Text } from 'native-base';
 
-
 const Tab = createBottomTabNavigator();
 
 export default function AppNavigator() {
